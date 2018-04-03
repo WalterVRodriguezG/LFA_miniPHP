@@ -22,7 +22,7 @@ public class PruebaInicial {
         System.out.println("Hola mundo!");
         
         
-        String path = "/Users/walterrodriguez/NetBeansProjects/PruebaInicial/src/pruebainicial/Lexer.flex";
+        String path = "/Users/walterrodriguez/NetBeansProjects/PruebaInicial/src/pruebainicial/AnalizadorLex.flex";
         JOptionPane.showMessageDialog(null, "Iniciamos leyendo archivo: \n" + path );
         
         createLexer(path);

@@ -1,13 +1,25 @@
 package pruebainicial;
 import static pruebainicial.Token.*;
 %%
-%class Lexer
+%class AnalizadorLex
 %type Token
-L=[a-b]
-D=[0-9]
+Letra=[a-bA-Z]
+Digito=[0-9]
+Palabra = {Letra}{Letra}*
+Numero = {Digito}{Digito}*
+SimboloInicio = "<?"
+SimboloFin = "?>"
+OperadorAritmetico = "+" | "-" | "*" | "/" | "%" | "**"
+OperadorLogico = "==" | "!=" | "<>" | "<" | "<=" | ">" | ">=" | "&&" | "||" | "!"
+TDatoBooleano = [trueTRUE] | [falseFALSE]
+TDatoEntero = {Numero}
+TDatoDouble = {Numero} | {Numero}* "." {Numero}*
+TDatoString = {Palabra}
+Identificadores = "T_"+{Palabra}
+VarCons = {Palabra}+"_" | {Palabra}{Numero}+"_"* 
 white=[ ,\n]
 %{
-    public String lexeme;
+    public String ;
 %}
 %%
 (white) {/*Ignore*/}
@@ -15,7 +27,7 @@ white=[ ,\n]
 "=" {return igual;}
 "+" {return sumar;}
 "-" {return restar;}
-{L} {lexeme = yytext(); return Variable;}
+{L} {lexeme = yytext(); return VarCons;}
 {D} {lexeme = yytext(); return Numero;}
 "*" {return multiplicacion;}
 "/" {return division;}

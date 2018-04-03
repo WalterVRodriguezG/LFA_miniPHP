@@ -170,7 +170,7 @@ public class Interfase extends javax.swing.JFrame {
         Reader reader;
         
         reader = new BufferedReader(new FileReader("/Users/walterrodriguez/NetBeansProjects/PruebaInicial/src/pruebainicial/fichero.txt"));
-        Lexer lexer = new Lexer(reader);
+        AnalizadorLex lexer = new AnalizadorLex(reader);
         
         String resultados = "";
         
@@ -187,7 +187,7 @@ public class Interfase extends javax.swing.JFrame {
                 case ERROR:
                     resultados = resultados + "Error, el simbolo no coincide \n";
                     break;
-                case Variable: case Numero:
+                case VarCons: case Numero:
                     resultados = resultados + "Token: "+token+ " "+lexer.lexeme+"\n";
                     break;
                 default:

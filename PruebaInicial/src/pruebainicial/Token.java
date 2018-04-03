@@ -10,5 +10,5 @@ package pruebainicial;
  * @author walterrodriguez
  */
 public enum Token {
-    igual, sumar, restar, Variable, Numero, multiplicacion, division, ERROR; 
+    Palabra, Numero, VarCons,sumar, restar,multiplicacion, division,igual, ERROR; 
 }

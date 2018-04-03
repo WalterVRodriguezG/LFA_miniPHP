@@ -5,9 +5,9 @@
         <group>
             <file>file:/Users/walterrodriguez/NetBeansProjects/PruebaInicial/src/pruebainicial/Lexer.flex</file>
             <file>file:/Users/walterrodriguez/NetBeansProjects/PruebaInicial/src/pruebainicial/Token.java</file>
+            <file>file:/Users/walterrodriguez/NetBeansProjects/PruebaInicial/src/pruebainicial/AnalizadorLex.flex</file>
             <file>file:/Users/walterrodriguez/NetBeansProjects/PruebaInicial/src/pruebainicial/PruebaInicial.java</file>
             <file>file:/Users/walterrodriguez/NetBeansProjects/PruebaInicial/src/pruebainicial/Interfase.java</file>
-            <file>file:/Users/walterrodriguez/NetBeansProjects/PruebaInicial/src/pruebainicial/Lexer.java</file>
         </group>
     </open-files>
 </project-private>
