@@ -1,1 +1,1 @@
-Sintaxis = 2
+<? php variable2 = 34+4 true //Comente ?>

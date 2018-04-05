@@ -3,32 +3,40 @@ import static pruebainicial.Token.*;
 %%
 %class AnalizadorLex
 %type Token
-Letra=[a-bA-Z]
+Letra=[a-zA-Z]
 Digito=[0-9]
+SintaxisPHP = "p|Ph|Hp|P"
+ComentariosLineal = "//"({Letra}|{Digito})*
 Palabra = {Letra}{Letra}*
 Numero = {Digito}{Digito}*
 SimboloInicio = "<?"
 SimboloFin = "?>"
 OperadorAritmetico = "+" | "-" | "*" | "/" | "%" | "**"
 OperadorLogico = "==" | "!=" | "<>" | "<" | "<=" | ">" | ">=" | "&&" | "||" | "!"
-TDatoBooleano = [trueTRUE] | [falseFALSE]
+TDatoBooleano = "t|Tr|Ru|Ue|E" | "f|Fa|Al|Ls|Se|E"
 TDatoEntero = {Numero}
 TDatoDouble = {Numero} | {Numero}* "." {Numero}*
 TDatoString = {Palabra}
 Identificadores = "T_"+{Palabra}
-VarCons = {Palabra}"_" | {Palabra}{Numero}"_"* 
+VarCons = {Palabra}"_" | {Palabra}{Numero}"_"*
+Comentarios = "//" 
 white=[ ,\n]
 %{
     public String lexeme;
 %}
 %%
 (white) {/*Ignore*/}
-"//".* {/*Ignore*/}
-"=" {return igual;}
-"+" {return sumar;}
-"-" {return restar;}
+"//"({Letra}|{Digito})* {return ComentariosLineal;}
+"<?" {return SimboloInicio;}
+"?>" {return SimboloFin;}
+"php|PHP" {return SintaxisPHP;}
 {Letra} {lexeme = yytext(); return VarCons;}
 {Digito} {lexeme = yytext(); return Numero;}
-"*" {return multiplicacion;}
-"/" {return division;}
+"+" {return OperadorAritmetico;}
+"-" {return OperadorAritmetico;}
+"*" {return OperadorAritmetico;}
+"/" {return OperadorAritmetico;}
+"%" {return OperadorAritmetico;}
+"**" {return OperadorAritmetico;}
+"TRUE|true" {return TDatoBooleano;}
 . {return ERROR;}

@@ -10,5 +10,5 @@ package pruebainicial;
  * @author walterrodriguez
  */
 public enum Token {
-    Palabra, Numero, VarCons,sumar, restar,multiplicacion, division,igual, ERROR; 
+    ComentariosLineal,SimboloInicio, SimboloFin, SintaxisPHP, Palabra, Numero, VarCons,OperadorAritmetico, TDatoBooleano,ERROR; 
 }
