@@ -22,14 +22,14 @@ TDatoEntero = {Numero}
 TDatoDouble = {Numero}+ "."({Numero})*
 TDatoString = [\"]("_"|{Palabra}|{Numero}|" "|.)*[\"]
 /*Identificadores*/
-Identificadores = "T_"+{Palabra}("_"|{Palabra})* | {Palabra}("_"|{Palabra}|{Numero})* | ("_"|{Palabra}|{Numero})*
+IdentCadena = "T_"+{Palabra}("_"|{Palabra})* | {Palabra}("_"|{Palabra}|{Numero})* | ("_"|{Palabra}|{Numero})*
 /*Variables*/
 Variable = "$"{Letra}+({Letra}|{Digito}|"_")*
 /*Constantes Predefinidas */
 VarPredeterminadas = "__"[lL][iI][nN][eE]"__" | "__"[fF][iI][lL][eE]"__" | "__"[dD][iI][rR]"__" | "__"[fF][uU][nN][tT][iI][oO][nN]"__" | "__"[cC][lL][aA][sS][sS]"__" | "__"[Tt][rR][aA][Ii][tT]"__" | "__"[mM][eE][tT][hH][oO][dD]"__" | "__"[nN][aA][mM][eE][sS][pP][aA][cC][eE]"__"
 /*Comentarios varios */
-ComentarioLineal = "//"({Letra}|{Digito}|" "| "*" | "@" | "." | "-" | "_" | "!" | "#" | "$" | "%" | "^" | "&" | "(" | ")" | "+" | "=" | ":" | ";" | "<" | ">" | "?" | "¿" | "," | [\\] |[\/] | [\|])*
-ComentarioExtendido = "/*"(({Letra}|{Digito} |{white}| "*" | "@" | "." | "-" | "_" | "!" | "#" | "$" | "%" | "^" | "&" | "(" | ")" | "+" | "=" | ":" | ";" | "<" | ">" | "?" | "¿" | "," | [\\] |[\/] | [\|])*)"*"[\/]
+ComentarioLineal = "//"({Letra}|{Digito}|" "| "*" | "@" | "." | "-" | "_" | "!" | "#" | "$" | "%" | "^" | "&" | "(" | ")" | "+" | "=" | ":" | ";" | "<" | ">" | "?" | "¿" | "," | [\\] |[\/] | [\|] | "`" | "~")*
+ComentarioExtendido = "/*"(({Letra}|{Digito} |{white}| "*" | "@" | "." | "-" | "_" | "!" | "#" | "$" | "%" | "^" | "&" | "(" | ")" | "+" | "=" | ":" | ";" | "<" | ">" | "?" | "¿" | "," | [\\] |[\/] | [\|] | "`" | "~")*)"*"[\/]
 /*Separador de Lineas de codigo*/
 Separador = ";" | "," | [\'] | [\"] | "." | "-" | [\\] |[\/] | [\|] | "?" | "¿"
 /*Declaracion de Vector*/
@@ -47,7 +47,8 @@ Condicional = ([iI][fF] | [Tt][Hh][Ee][Nn] | [eE][Ll][sS][Ee] | [eE][Ll][sS][Ee]
 CicloCondicional = ([Ww][hH][iI][lL][eE] | [Dd][Oo]){white}"("
 Iterador = ([Ff][oO][Rr] | [Ff][oO][Rr][eE][aA][cC][hH]){white}"("
 Break = ([Bb][Rr][Ee][Aa][Kk]){white}"("
-
+/*Base de Datos*/
+AccesoBD = "$"[rR][eE][Cc][oO][rR][sS][eE][tT]"[\'"
  
 %{
     public String retornaToken;
@@ -57,7 +58,7 @@ Break = ([Bb][Rr][Ee][Aa][Kk]){white}"("
 {SintaxisPHP} {retornaToken=yytext();     return SintaxisPHP;}
 "<?"            {retornaToken=yytext();  return SimboloInicio;}
 "?>"            {retornaToken=yytext();  return SimboloFin;}
-{PReservada}    {retornaToken=yytext(); return PReservada;}
+{PReservada}                {retornaToken=yytext(); return PReservada;}
 {AsignacionVariable}        {retornaToken=yytext();return AsignacionVariable;}
 {OperadorAritmetico}        {retornaToken=yytext(); return OperadorAritmetico;}
 {OperadorLogico}            {retornaToken=yytext(); return OperadorLogico;}
@@ -65,7 +66,7 @@ Break = ([Bb][Rr][Ee][Aa][Kk]){white}"("
 {TDatoEntero}               {retornaToken=yytext(); return TDatoEntero;}
 {TDatoDouble}               {retornaToken=yytext(); return TDatoDouble;}
 {TDatoString}               {retornaToken = yytext(); return TDatoString;}
-{Identificadores}           {retornaToken=yytext(); return Identificadores;}
+{IdentCadena}               {retornaToken=yytext(); return IdentCadena;}
 {Variable}      {retornaToken=yytext(); return Variable;}
 {VarPredeterminadas}        {retornaToken=yytext(); return VarPredeterminadas;}
 {ComentarioLineal}          {retornaToken=yytext(); return ComentarioLineal;}
@@ -81,4 +82,5 @@ Break = ([Bb][Rr][Ee][Aa][Kk]){white}"("
 {CicloCondicional}          {retornaToken=yytext(); return CicloCondicional;}
 {Iterador}      {retornaToken=yytext(); return Iterador;}
 {Break}         {retornaToken=yytext(); return Break;}
+{AccesoBD}      {retornaToken = yytext(); return AccesoBD;}
 . {return ERROR;}

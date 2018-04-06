@@ -13,6 +13,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -25,7 +26,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class Interfase extends javax.swing.JFrame {
     JFileChooser cargaArchivo;
-    File archivo;
+    File archivoPHP;
     FileInputStream lecturaArchivo;
 
     /**
@@ -51,6 +52,10 @@ public class Interfase extends javax.swing.JFrame {
         btnCargarPHP = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtResultado = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtCargaArchivo = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,10 +87,10 @@ public class Interfase extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnCargarPHP, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                    .addComponent(btnAnalizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(156, 156, 156))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAnalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCargarPHP, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(182, 182, 182))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,26 +110,48 @@ public class Interfase extends javax.swing.JFrame {
         txtResultado.setRows(5);
         jScrollPane1.setViewportView(txtResultado);
 
+        txtCargaArchivo.setColumns(20);
+        txtCargaArchivo.setRows(5);
+        jScrollPane2.setViewportView(txtCargaArchivo);
+
+        jLabel2.setText("Lectura de tokens");
+
+        jLabel3.setText("Lectura de Archivo PHP");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 14, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addGap(83, 83, 83)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(79, 79, 79))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addContainerGap())
         );
 
         pack();
@@ -141,12 +168,15 @@ public class Interfase extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAnalizarActionPerformed
 
     private void btnCargarPHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarPHPActionPerformed
-        // TODO add your handling code here:
-        
-        AbrirPHP();
+        try {
+            // TODO add your handling code here:
+            AbrirPHP();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Interfase.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnCargarPHPActionPerformed
 
-    public void AbrirPHP(){
+    public void AbrirPHP() throws FileNotFoundException{
         int cantidadArchivos = 0;
         cargaArchivo = new JFileChooser();
         cargaArchivo.showDialog(null, " Abrir Archivo ");
@@ -156,13 +186,16 @@ public class Interfase extends javax.swing.JFrame {
         cargaArchivo.setFileFilter(definirExtension);
         
         if (rootPaneCheckingEnabled) {
-            archivo = cargaArchivo.getSelectedFile();
+            archivoPHP = cargaArchivo.getSelectedFile();
         }else{
             JOptionPane.showMessageDialog(null,"Archivo no valido. \nSeleccione un archivo con extension PHP.");
         }
        
-        txtOperacion.setText(archivo.getAbsolutePath());
-        
+        txtOperacion.setText(archivoPHP.getAbsolutePath());
+        Scanner scn = new Scanner(archivoPHP);
+            while (scn.hasNext()) {
+             txtCargaArchivo.insert(scn.nextLine() + "\n", txtCargaArchivo.getText().length());
+            }
     }
     
     /**
@@ -202,12 +235,11 @@ public class Interfase extends javax.swing.JFrame {
     
     public void ProbarLexerFile() throws FileNotFoundException, IOException{
         txtResultado.setText("");
-        File fichero = new File("/Users/walterrodriguez/NetBeansProjects/PruebaInicial/src/pruebainicial/fichero.txt");
-        PrintWriter writer;
+        int contadorErrores = 0;
         
-        writer = new PrintWriter(fichero);
-        writer.print(txtOperacion.getText());
-        writer.close();
+        File phpGenerado = new File("/Users/walterrodriguez/NetBeansProjects/PruebaInicial/src/pruebainicial/PhpCorrecto.php");
+        File ListadoErrores = new File("/Users/walterrodriguez/NetBeansProjects/PruebaInicial/src/pruebainicial/ListadoErrores.txt");
+        PrintWriter writer;
         
         Reader reader;
         
@@ -216,34 +248,52 @@ public class Interfase extends javax.swing.JFrame {
         
         String resultados = "";
         
+
         while(true){
             Token token = lexer.yylex();
             
             if (token == null) {
                 resultados = resultados + " FIN";
                 txtResultado.setText(resultados);
-            
+                
+                if (contadorErrores > 0) {
+                    writer = new PrintWriter(ListadoErrores);
+                   writer.print(txtResultado.getText());
+                   writer.close();
+                   JOptionPane.showMessageDialog(rootPane, "Archivo de Errores generado. \nUbicación: \n" +ListadoErrores.getAbsolutePath());
+                }else{
+                    writer = new PrintWriter(phpGenerado);
+                    writer.print(txtCargaArchivo.getText().toLowerCase());
+                    writer.close();
+                    JOptionPane.showMessageDialog(rootPane, "Archivo correcto de PHP fue creado. \nUbicación: \n" +phpGenerado.getAbsolutePath());
+                }
+               
             return;
             }
+            
             switch(token){
                 case ERROR:
-                    resultados = resultados + "Error, el simbolo no coincide \n";
+                    resultados = resultados + "Error 1200, el simbolo no coincide \n";
+                    contadorErrores = contadorErrores + 1;
                     break;
                 default:
                     resultados = resultados + "Token: " + token + " "+ lexer.retornaToken+"\n";
             }
+            
         }
-        
-        
-        
-    }
+}
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnalizar;
     private javax.swing.JButton btnCargarPHP;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea txtCargaArchivo;
     private javax.swing.JTextField txtOperacion;
     private javax.swing.JTextArea txtResultado;
     // End of variables declaration//GEN-END:variables
