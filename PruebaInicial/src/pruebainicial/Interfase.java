@@ -200,6 +200,7 @@ public class Interfase extends javax.swing.JFrame {
     }
     
     public void ProbarLexerFile() throws FileNotFoundException, IOException{
+        txtResultado.setText("");
         File fichero = new File("/Users/walterrodriguez/NetBeansProjects/PruebaInicial/src/pruebainicial/fichero.txt");
         PrintWriter writer;
         
@@ -227,11 +228,11 @@ public class Interfase extends javax.swing.JFrame {
                 case ERROR:
                     resultados = resultados + "Error, el simbolo no coincide \n";
                     break;
-//                case VarCons: case Numero:
+                 // case VarCons: case Numero:
 //                    resultados = resultados + "Token: "+token+ " "+lexer.lexeme+"\n";
 //                    break;
                 default:
-                    resultados = resultados + "Token: " + token +"\n";
+                    resultados = resultados + "Token: " + token + " "+ lexer.lexeme+"\n";
             }
         }
         

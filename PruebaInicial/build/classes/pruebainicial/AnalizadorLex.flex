@@ -20,9 +20,9 @@ OperadorLogico = "==" | "!=" | "<>" | "<" | "<=" | ">" | ">=" | "&&" | "||" | "!
 TDatoLogico = [tT][rR][uU][eE]|[fF][aA][lL][sS][eE]
 TDatoEntero = {Numero}
 TDatoDouble = {Numero}+ "."({Numero})*
-TDatoString = [\"]{Palabra}+("_"|{Palabra}|{Numero}|" "|.)*[\"]
+TDatoString = [\"]("_"|{Palabra}|{Numero}|" "|.)*[\"]
 /*Identificadores*/
-Identificadores = "T_"+{Palabra}("_"{Palabra})*
+Identificadores = ("T_"+{Palabra}("_"{Palabra})*) | {Palabra}("_"{Palabra}{Numero})*
 /*Variables*/
 Variable = "$"{Letra}+({Letra}|{Digito}|"_")*
 /*Constantes Predefinidas */
@@ -43,7 +43,7 @@ InicioFuncion = "{"
 FinFuncion = "}"
 AperturaDefinicion = "("
 FinDefinicion = ")" 
-Condicional = [iI][fF] | [Tt][Hh][Ee][Nn] | [eE][Ll][sS][Ee] | [eE][Ll][sS][Ee][iI][fF] |[sS][wW][iI][tT][cC][hH] | [Ee][Nn][Dd][iI][Ff]
+Condicional = ([iI][fF] | [Tt][Hh][Ee][Nn] | [eE][Ll][sS][Ee] | [eE][Ll][sS][Ee][iI][fF] |[sS][wW][iI][tT][cC][hH] | [Ee][Nn][Dd][iI][Ff]){white}"("
 CicloCondicional = [Ww][hH][iI][lL][eE] | [Dd][Oo]
 Iterador = [Ff][oO][Rr] | [Ff][oO][Rr][eE][aA][cC][hH]
 Break = [Bb][Rr][Ee][Aa][Kk]
@@ -59,26 +59,26 @@ Break = [Bb][Rr][Ee][Aa][Kk]
 "?>" {return SimboloFin;}
 {PReservada} {lexeme=yytext(); return PReservada;}
 "=" {return AsignacionVariable;}
-{OperadorAritmetico} {return OperadorAritmetico;}
-{OperadorLogico} {return OperadorLogico;}
-{TDatoLogico}   {return TDatoLogico;}
-{TDatoEntero}   {return TDatoEntero;}
-{TDatoDouble}    {return TDatoDouble;}
-{TDatoString}   {return TDatoString;}
-{Identificadores}   {return Identificadores;}
-{Variable}      {return Variable;}
-{VarCons}       {return VarCons;}
-{ComentarioLineal}      {return ComentarioLineal;}
-{ComentarioExtendido}   {return ComentarioExtendido;}
-{Separador}     {return Separador;}
-{Vector}        {return Vector;}
-{ValorHTML}     {return ValorHTML;}
-{InicioFuncion} {return InicioFuncion;}
-{FinFuncion}    {return FinFuncion;}
-{AperturaDefinicion}    {return AperturaDefinicion;}
-{FinDefinicion}         {return FinDefinicion;}
-{Condicional}   {return Condicional;}
-{CicloCondicional}      {return CicloCondicional;}
-{Iterador}      {return Iterador;}
-{Break}         {return Break;}
+{OperadorAritmetico} {lexeme=yytext(); return OperadorAritmetico;}
+{OperadorLogico} {lexeme=yytext(); return OperadorLogico;}
+{TDatoLogico}   {lexeme=yytext(); return TDatoLogico;}
+{TDatoEntero}   {lexeme=yytext(); return TDatoEntero;}
+{TDatoDouble}    {lexeme=yytext(); return TDatoDouble;}
+{TDatoString}   {lexeme = yytext(); return TDatoString;}
+{Identificadores}   {lexeme=yytext(); return Identificadores;}
+{Variable}      {lexeme=yytext(); return Variable;}
+{VarCons}       {lexeme=yytext(); return VarCons;}
+{ComentarioLineal}      {lexeme=yytext(); return ComentarioLineal;}
+{ComentarioExtendido}   {lexeme=yytext(); return ComentarioExtendido;}
+{Separador}     {lexeme=yytext(); return Separador;}
+{Vector}        {lexeme=yytext(); return Vector;}
+{ValorHTML}     {lexeme=yytext(); return ValorHTML;}
+{InicioFuncion} {lexeme=yytext(); return InicioFuncion;}
+{FinFuncion}    {lexeme=yytext();  return FinFuncion;}
+{AperturaDefinicion}    {lexeme=yytext(); return AperturaDefinicion;}
+{FinDefinicion}         {lexeme=yytext(); return FinDefinicion;}
+{Condicional}   {lexeme=yytext(); return Condicional;}
+{CicloCondicional}      {lexeme=yytext(); return CicloCondicional;}
+{Iterador}      {lexeme=yytext(); return Iterador;}
+{Break}         {lexeme=yytext(); return Break;}
 . {return ERROR;}
