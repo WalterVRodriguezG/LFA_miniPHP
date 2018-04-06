@@ -162,6 +162,7 @@ public class Interfase extends javax.swing.JFrame {
         }
        
         txtOperacion.setText(archivo.getAbsolutePath());
+        
     }
     
     /**
@@ -228,13 +229,11 @@ public class Interfase extends javax.swing.JFrame {
                 case ERROR:
                     resultados = resultados + "Error, el simbolo no coincide \n";
                     break;
-                 // case VarCons: case Numero:
-//                    resultados = resultados + "Token: "+token+ " "+lexer.lexeme+"\n";
-//                    break;
                 default:
-                    resultados = resultados + "Token: " + token + " "+ lexer.lexeme+"\n";
+                    resultados = resultados + "Token: " + token + " "+ lexer.retornaToken+"\n";
             }
         }
+        
         
         
     }
