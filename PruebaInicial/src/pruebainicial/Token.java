@@ -10,5 +10,5 @@ package pruebainicial;
  * @author walterrodriguez
  */
 public enum Token {
-    ComentariosLineal,SimboloInicio, SimboloFin, SintaxisPHP, Palabra, Numero, VarCons,OperadorAritmetico, TDatoBooleano,ERROR; 
+    SintaxisPHP, SimboloInicio, SimboloFin, PReservada, AsignacionVariable, OperadorAritmetico, OperadorLogico, TDatoLogico, TDatoEntero, TDatoDouble, TDatoString, Identificadores, Variable, VarCons, ComentarioLineal, ComentarioExtendido, Separador, Vector, ValorHTML, InicioFuncion, FinFuncion, AperturaDefinicion, FinDefinicion, Condicional, CicloCondicional, Iterador, Break, ERROR; 
 }

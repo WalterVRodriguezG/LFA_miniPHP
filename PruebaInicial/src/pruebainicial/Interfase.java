@@ -7,6 +7,7 @@ package pruebainicial;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,12 +15,18 @@ import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
  * @author walterrodriguez
  */
 public class Interfase extends javax.swing.JFrame {
+    JFileChooser cargaArchivo;
+    File archivo;
+    FileInputStream lecturaArchivo;
 
     /**
      * Creates new form Interfase
@@ -41,17 +48,25 @@ public class Interfase extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtOperacion = new javax.swing.JTextField();
         btnAnalizar = new javax.swing.JButton();
+        btnCargarPHP = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtResultado = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Ingresar Operacion");
+        jLabel1.setText("Abrir Archivo");
 
         btnAnalizar.setText("Analizar");
         btnAnalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAnalizarActionPerformed(evt);
+            }
+        });
+
+        btnCargarPHP.setText("Cargar Archivo");
+        btnCargarPHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarPHPActionPerformed(evt);
             }
         });
 
@@ -62,26 +77,28 @@ public class Interfase extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addComponent(txtOperacion)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(144, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(btnAnalizar))
-                    .addComponent(txtOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnCargarPHP, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                    .addComponent(btnAnalizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(156, 156, 156))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1)
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAnalizar)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addComponent(btnCargarPHP, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAnalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         txtResultado.setColumns(20);
@@ -93,22 +110,21 @@ public class Interfase extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(208, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -124,6 +140,30 @@ public class Interfase extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAnalizarActionPerformed
 
+    private void btnCargarPHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarPHPActionPerformed
+        // TODO add your handling code here:
+        
+        AbrirPHP();
+    }//GEN-LAST:event_btnCargarPHPActionPerformed
+
+    public void AbrirPHP(){
+        int cantidadArchivos = 0;
+        cargaArchivo = new JFileChooser();
+        cargaArchivo.showDialog(null, " Abrir Archivo ");
+        FileNameExtensionFilter definirExtension = new FileNameExtensionFilter("PHP Hypertext Preprocessorfile", "php");
+        
+        cantidadArchivos = cargaArchivo.showOpenDialog(this);
+        cargaArchivo.setFileFilter(definirExtension);
+        
+        if (rootPaneCheckingEnabled) {
+            archivo = cargaArchivo.getSelectedFile();
+        }else{
+            JOptionPane.showMessageDialog(null,"Archivo no valido. \nSeleccione un archivo con extension PHP.");
+        }
+       
+        txtOperacion.setText(archivo.getAbsolutePath());
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -169,7 +209,7 @@ public class Interfase extends javax.swing.JFrame {
         
         Reader reader;
         
-        reader = new BufferedReader(new FileReader("/Users/walterrodriguez/NetBeansProjects/PruebaInicial/src/pruebainicial/fichero.txt"));
+        reader = new BufferedReader(new FileReader(txtOperacion.getText()));
         AnalizadorLex lexer = new AnalizadorLex(reader);
         
         String resultados = "";
@@ -187,9 +227,9 @@ public class Interfase extends javax.swing.JFrame {
                 case ERROR:
                     resultados = resultados + "Error, el simbolo no coincide \n";
                     break;
-                case VarCons: case Numero:
-                    resultados = resultados + "Token: "+token+ " "+lexer.lexeme+"\n";
-                    break;
+//                case VarCons: case Numero:
+//                    resultados = resultados + "Token: "+token+ " "+lexer.lexeme+"\n";
+//                    break;
                 default:
                     resultados = resultados + "Token: " + token +"\n";
             }
@@ -200,6 +240,7 @@ public class Interfase extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnalizar;
+    private javax.swing.JButton btnCargarPHP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
