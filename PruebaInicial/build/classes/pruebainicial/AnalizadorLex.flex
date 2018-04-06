@@ -11,7 +11,7 @@ SintaxisPHP = [pP][hH][pP]
 SimboloInicio = "<?"
 SimboloFin = "?>"
 /* Palabras Reservadas */
-PReservada = [cC][Ll][Oo][Nn][Ee] | [Ee][Nn][Dd][Ss][Ww][Ii][Tt][Cc][Hh] | [Ff][Ii][Nn][aA][lL] | [Gg][Ll][Oo][Bb][Aa][Ll] | [Pp][Rr][Ii][Vv][Aa][tT][eE] | [Rr][eE][Tt][Uu][Rr][Nn] | [Tt][Rr][yY] | [Xx][Oo][Rr] | [Ss][Tt][Aa][Tt][Ii][Cc] | [Aa][Bb][Ss][Tt][Rr][aA][Cc][tT] | [Cc][aA][Ll][Ll][Aa][Bb][Ll][Ee] | [Cc][Oo][nN][sS][tT] | [eE][nN][dD][Dd][eE][cC][Ll][Aa][Rr][Ee] | [Ff][Ii][Nn][Aa][Ll][Ll][Yy] | [Gg][Oo][Tt][Oo] | [Ii][Nn][Ss][Tt][Aa][Nn][Cc][Ee][Oo][Ff] | [Nn][Aa][Mm][Ee][Ss][Pp][Aa][Cc][Ee] | [Yy][Ii][Ee][Ll][Dd] | [Cc][Oo][On][Tt][Ii][Nn][Uu][Ee] | [Ee][Cc][Hh][Oo] | [Nn][Ee][Ww] | [Uu][Ss][Ee] | [Dd][Ee][Cc][Ll][Aa][Rr][Ee] | [Pp][Uu][Bb][Ll][Ii][Cc] | [Rr][Ee][Qq][Uu][Ii][Rr][Ee] | [Ii][Mm][Pp][Ll][Ee][Mm][Ee][Nn][Tt][Ss] | [Ii][Nn][Tt][Ee][Rr][Ff][Aa][Cc][ee] | [Vv][Aa][Rr] | [Dd][Ee][Ff][Aa][Uu][Ll][Tt] | [Ee][Xx][Tt][Ee][Nn][Ee][Dd][Ss] | [Ii][Nn][Cc][Ll][Uu][Dd][Ee] | [fF][uU][nN][cC][Tt][iI][oO][nN]| [Pp][Rr][Ii][Nn][Tt] | [Ss][Tt][Rr][Pp][Oo][Ss] | [Dd][Ii][Rr][Nn][Aa][Mm][Ee] | [Ss][Tt][Rr][tT][rR] | [aA][Ss]
+PReservada = [cC][Ll][Oo][Nn][Ee] | [Ee][Nn][Dd][Ss][Ww][Ii][Tt][Cc][Hh] | [Ff][Ii][Nn][aA][lL] | [Gg][Ll][Oo][Bb][Aa][Ll] | [Pp][Rr][Ii][Vv][Aa][tT][eE] | [Rr][eE][Tt][Uu][Rr][Nn] | [Tt][Rr][yY] | [Xx][Oo][Rr] | [Ss][Tt][Aa][Tt][Ii][Cc] | [Aa][Bb][Ss][Tt][Rr][aA][Cc][tT] | [Cc][aA][Ll][Ll][Aa][Bb][Ll][Ee] | [Cc][Oo][nN][sS][tT] | [eE][nN][dD][Dd][eE][cC][Ll][Aa][Rr][Ee] | [Ff][Ii][Nn][Aa][Ll][Ll][Yy] | [Gg][Oo][Tt][Oo] | [Ii][Nn][Ss][Tt][Aa][Nn][Cc][Ee][Oo][Ff] | [Nn][Aa][Mm][Ee][Ss][Pp][Aa][Cc][Ee] | [Yy][Ii][Ee][Ll][Dd] | [Cc][Oo][On][Tt][Ii][Nn][Uu][Ee] | [Ee][Cc][Hh][Oo] | [Nn][Ee][Ww] | [Uu][Ss][Ee] | [Dd][Ee][Cc][Ll][Aa][Rr][Ee] | [Pp][Uu][Bb][Ll][Ii][Cc] | [Rr][Ee][Qq][Uu][Ii][Rr][Ee] | [Ii][Mm][Pp][Ll][Ee][Mm][Ee][Nn][Tt][Ss] | [Ii][Nn][Tt][Ee][Rr][Ff][Aa][Cc][ee] | [Vv][Aa][Rr] | [Dd][Ee][Ff][Aa][Uu][Ll][Tt] | [Ee][Xx][Tt][Ee][Nn][Ee][Dd][Ss] | [Ii][Nn][Cc][Ll][Uu][Dd][Ee] | [fF][uU][nN][cC][Tt][iI][oO][nN]| [Pp][Rr][Ii][Nn][Tt] | [Ss][Tt][Rr][Pp][Oo][Ss] | [Dd][Ii][Rr][Nn][Aa][Mm][Ee] | [Ss][Tt][Rr][tT][rR] | [aA][Ss] | [nN][uU][Ll][Ll]
 AsignacionVariable = "=" | "->" | ":"
 /*Operadores*/
 OperadorAritmetico = "+" | "-" | "*" | "/" | "%" | "**"
@@ -31,7 +31,7 @@ VarPredeterminadas = "__"[lL][iI][nN][eE]"__" | "__"[fF][iI][lL][eE]"__" | "__"[
 ComentarioLineal = "//"({Letra}|{Digito}|" "| "*" | "@" | "." | "-" | "_" | "!" | "#" | "$" | "%" | "^" | "&" | "(" | ")" | "+" | "=" | ":" | ";" | "<" | ">" | "?" | "¿" | "," | [\\] |[\/] | [\|] | "`" | "~")*
 ComentarioExtendido = "/*"(({Letra}|{Digito} |{white}| "*" | "@" | "." | "-" | "_" | "!" | "#" | "$" | "%" | "^" | "&" | "(" | ")" | "+" | "=" | ":" | ";" | "<" | ">" | "?" | "¿" | "," | [\\] |[\/] | [\|] | "`" | "~")*)"*"[\/]
 /*Separador de Lineas de codigo*/
-Separador = ";" | "," | [\'] | [\"] | "." | "-" | [\\] |[\/] | [\|] | "?" | "¿"
+Separador = ";" | "," | [\'] | [\"] | "." | "-" | [\\] |[\/] | [\|] | "?" | "¿" | "]" | "["
 /*Declaracion de Vector*/
 Vector = {Variable}"["{TDatoEntero}"]"
 /*Sintaxis HTML*/

@@ -928,47 +928,47 @@ Token: Condicional if (
 Token: IdentCadena isset
 Token: AperturaDefinicion (
 Token: Variable $recordset
-Error 1200, el simbolo no coincide 
+Token: Separador [
 Token: Separador '
 Token: IdentCadena library_version
 Token: Separador '
-Error 1200, el simbolo no coincide 
+Token: Separador ]
 Token: FinDefinicion )
 Token: FinDefinicion )
 Token: InicioFuncion {
 Token: Variable $recordset
-Error 1200, el simbolo no coincide 
+Token: Separador [
 Token: Separador '
 Token: IdentCadena readline
 Token: IdentCadena library
 Token: Separador '
-Error 1200, el simbolo no coincide 
+Token: Separador ]
 Token: AsignacionVariable =
 Token: Variable $recordset
-Error 1200, el simbolo no coincide 
+Token: Separador [
 Token: Separador '
 Token: IdentCadena library_version
 Token: Separador '
-Error 1200, el simbolo no coincide 
+Token: Separador ]
 Token: Separador ;
 Token: FinFuncion }
 Token: Condicional if (
 Token: IdentCadena isset
 Token: AperturaDefinicion (
 Token: Variable $recordset
-Error 1200, el simbolo no coincide 
+Token: Separador [
 Token: Separador '
 Token: IdentCadena readline_name
 Token: Separador '
-Error 1200, el simbolo no coincide 
+Token: Separador ]
 Token: FinDefinicion )
 Token: OperadorLogico &&
 Token: Variable $recordset
-Error 1200, el simbolo no coincide 
+Token: Separador [
 Token: Separador '
 Token: IdentCadena readline_name
 Token: Separador '
-Error 1200, el simbolo no coincide 
+Token: Separador ]
 Token: OperadorLogico !=
 Token: AsignacionVariable =
 Token: Separador '
@@ -976,19 +976,19 @@ Token: Separador '
 Token: FinDefinicion )
 Token: InicioFuncion {
 Token: Variable $recordset
-Error 1200, el simbolo no coincide 
+Token: Separador [
 Token: Separador '
 Token: IdentCadena readline
 Token: IdentCadena name
 Token: Separador '
-Error 1200, el simbolo no coincide 
+Token: Separador ]
 Token: AsignacionVariable =
 Token: Variable $recordset
-Error 1200, el simbolo no coincide 
+Token: Separador [
 Token: Separador '
 Token: IdentCadena readline_name
 Token: Separador '
-Error 1200, el simbolo no coincide 
+Token: Separador ]
 Token: Separador ;
 Token: FinFuncion }
 Token: FinFuncion }
@@ -1083,12 +1083,12 @@ Token: FinDefinicion )
 Token: FinDefinicion )
 Token: InicioFuncion {
 Token: Variable $recordset
-Error 1200, el simbolo no coincide 
+Token: Separador [
 Token: Separador '
 Token: IdentCadena pcntl
 Token: IdentCadena disabled
 Token: Separador '
-Error 1200, el simbolo no coincide 
+Token: Separador ]
 Token: AsignacionVariable =
 Token: TDatoLogico true
 Token: Separador ;
@@ -1277,9 +1277,9 @@ Token: Variable $key
 Token: FinDefinicion )
 Token: Separador ;
 Token: Variable $recordset
-Error 1200, el simbolo no coincide 
+Token: Separador [
 Token: Variable $key
-Error 1200, el simbolo no coincide 
+Token: Separador ]
 Token: AsignacionVariable =
 Token: Variable $val
 Token: Separador ;
@@ -1288,12 +1288,12 @@ Token: FinFuncion }
 Token: IdentCadena else
 Token: InicioFuncion {
 Token: Variable $recordset
-Error 1200, el simbolo no coincide 
+Token: Separador [
 Token: Separador '
 Token: IdentCadena db
 Token: IdentCadena schema
 Token: Separador '
-Error 1200, el simbolo no coincide 
+Token: Separador ]
 Token: AsignacionVariable =
 Token: Separador '
 Token: TDatoDouble 0.1
@@ -1330,12 +1330,12 @@ Token: Separador '
 Token: FinDefinicion )
 Token: InicioFuncion {
 Token: Variable $recordset
-Error 1200, el simbolo no coincide 
+Token: Separador [
 Token: Separador '
 Token: IdentCadena sqlite
 Token: IdentCadena available
 Token: Separador '
-Error 1200, el simbolo no coincide 
+Token: Separador ]
 Token: AsignacionVariable =
 Token: TDatoLogico false
 Token: Separador ;
@@ -1624,11 +1624,11 @@ Token: FinDefinicion )
 Token: FinDefinicion )
 Token: InicioFuncion {
 Token: Variable $recordset
-Error 1200, el simbolo no coincide 
+Token: Separador [
 Token: Separador '
 Token: IdentCadena configFile
 Token: Separador '
-Error 1200, el simbolo no coincide 
+Token: Separador ]
 Token: AsignacionVariable =
 Token: Variable $configFile
 Token: Separador ;
@@ -1686,11 +1686,11 @@ Token: FinDefinicion )
 Token: FinDefinicion )
 Token: InicioFuncion {
 Token: Variable $recordset
-Error 1200, el simbolo no coincide 
+Token: Separador [
 Token: Separador '
 Token: IdentCadena colorMode
 Token: Separador '
-Error 1200, el simbolo no coincide 
+Token: Separador ]
 Token: AsignacionVariable =
 Token: IdentCadena Configuration
 Token: AsignacionVariable :
@@ -1712,11 +1712,11 @@ Token: FinDefinicion )
 Token: FinDefinicion )
 Token: InicioFuncion {
 Token: Variable $recordset
-Error 1200, el simbolo no coincide 
+Token: Separador [
 Token: Separador '
 Token: IdentCadena colorMode
 Token: Separador '
-Error 1200, el simbolo no coincide 
+Token: Separador ]
 Token: AsignacionVariable =
 Token: IdentCadena Configuration
 Token: AsignacionVariable :
@@ -1787,11 +1787,11 @@ Token: AperturaDefinicion (
 Token: IdentCadena reset
 Token: AperturaDefinicion (
 Token: Variable $recordset
-Error 1200, el simbolo no coincide 
+Token: Separador [
 Token: Separador '
 Token: IdentCadena argv
 Token: Separador '
-Error 1200, el simbolo no coincide 
+Token: Separador ]
 Token: FinDefinicion )
 Token: FinDefinicion )
 Token: Separador ;
